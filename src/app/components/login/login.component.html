@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <input class="form-control" formControlName="email" />
+        <ng-container *ngIf="loginForm.controls['email']?.touched">
+          <span
+            class="text-danger"
+            *ngIf="loginForm.controls['email']?.errors?.['required']"
+            >Please enter your email</span
+          >
+          <span
+            class="text-danger"
+            *ngIf="loginForm.controls['email']?.errors?.['email']"
+            >Please enter a valid email address</span
+          >
+        </ng-container>
+        <input
+          class="form-control"
+          type="password"
+          formControlName="password"
+        />
+        <ng-container *ngIf="loginForm.controls['password']?.touched">
+          <span
+            class="text-danger"
+            *ngIf="loginForm.controls['password']?.errors?.['required']"
+            >Please enter a your password</span
+          >
+        </ng-container>
+        <button
+          class="btn btn-success btn-block"
+          type="submit"
+          [disabled]="!loginForm.valid"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

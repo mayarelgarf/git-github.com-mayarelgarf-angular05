@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Register</h1>
+      <div *ngIf="error" class="alert alert-danger alert-block">{{ error }}</div>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <input
+          class="form-control"
+          placeholder="First Name"
+          formControlName="first_name"
+        />
+        <span *ngIf="c['first_name'].errors" class="text-danger"
+          >Please enter a valid name</span
+        >
+        <input
+          class="form-control"
+          placeholder="Last Name"
+          formControlName="last_name"
+        />
+        <span *ngIf="c['last_name'].errors" class="text-danger"
+          >Please enter a valid name</span
+        >
+        <input
+          class="form-control"
+          placeholder="Email"
+          formControlName="email"
+        />
+        <span *ngIf="c['email'].errors" class="text-danger"
+          >Please enter a valid email</span
+        >
+        <input
+          class="form-control"
+          placeholder="Password"
+          formControlName="password"
+          type="password"
+        />
+        <span *ngIf="c['password'].errors" class="text-danger"
+          >Please enter a valid password</span
+        >
+        <input
+          class="form-control"
+          placeholder="Password Confirm"
+          formControlName="password_confirm"
+          type="password"
+        />
+        <span *ngIf="c['password_confirm'].errors" class="text-danger"
+          >Password and Confirmation don't match</span
+        >
+        <button
+          class="btn btn-success btn-block"
+          [disabled]="!registerForm.valid"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

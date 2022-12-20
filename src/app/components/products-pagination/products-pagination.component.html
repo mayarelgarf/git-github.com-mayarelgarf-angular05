@@ -1,0 +1,21 @@
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [ngClass]="{ disabled: currentPage < 1 }">
+      <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+    </li>
+
+    <li
+      *ngFor="let item of [].constructor(getPagesCount()); let i = index"
+      class="page-item"
+      [ngClass]="{ active: i == currentPage }"
+    >
+      <a class="page-link" (click)="changePage(i)">{{ i + 1 }}</a>
+    </li>
+    <li
+      class="page-item"
+      [ngClass]="{ disabled: currentPage >= getPagesCount() - 1 }"
+    >
+      <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+    </li>
+  </ul>
+</nav>
